@@ -650,7 +650,7 @@ nav ul li a
     font-size: 4rem;
     font-weight: 800;
     font-family: var(--font);
-    color: var(--green);
+    color: #fff;
     position: relative;
     top: 10vh;
 }
@@ -659,10 +659,11 @@ nav ul li a
     font-size: 3rem;
     font-weight: 600;
     font-family: var(--font);
-    color: #fff;
+    color: #ffffff5d;
     position: relative;
     top: 8vh;
 }
 .last span{
 	color: var(--orange);
+	text-shadow: 0px 0px 4px var(--orange);
 }
