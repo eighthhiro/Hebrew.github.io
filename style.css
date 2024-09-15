@@ -23,7 +23,7 @@ nav{
     width: 85vw;
     height: 15vh;
     max-width: 85vw;
-    max-height: 15vh;;
+    max-height: 15vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -373,7 +373,7 @@ nav ul li a
     color: var(--orange);
     text-shadow: 0px 1px 10px var(--orange);
     top: 35vh;
-    margin-bottom: 20vh;
+    margin-bottom: 17vh;
 }
 .nnext img{
     position: absolute;
@@ -577,7 +577,7 @@ nav ul li a
     color: var(--orange);
     text-shadow: 0px 1px 10px var(--orange);
     top: 40vh;
-    margin-bottom: 23vh;
+    margin-bottom: 23.5vh;
 }
 .intro #five{
     position: absolute;
@@ -636,7 +636,7 @@ nav ul li a
 }
 .swipe3:hover{
     border-bottom-width: 7px;
-    top: 46%;
+    top: 43%;
 }
 .last{
     width: 100%;
