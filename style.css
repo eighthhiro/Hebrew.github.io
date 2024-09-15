@@ -519,7 +519,7 @@ nav ul li a
     position: relative;
     font-family: var(--font);
     font-size: 4rem;
-    left: 5vw;
+    left: 5.5vw;
     color: #fff;
     opacity: 0;
     animation: f2 1s forwards;
@@ -533,7 +533,7 @@ nav ul li a
     position: absolute;
     font-family: var(--font);
     font-size: 3rem;
-    left: 23vw;
+    left: 25vw;
     color: #fff;
     opacity: 0;
     top: 17vh;
@@ -544,7 +544,7 @@ nav ul li a
     position: absolute;
     font-family: var(--font);
     font-size: 3rem;
-    left: 23vw;
+    left: 25vw;
     opacity: 0;
     color: #fff;
     top: 36vh;
@@ -561,7 +561,7 @@ nav ul li a
     position: absolute;
     font-family: var(--font);
     font-size: 3rem;
-    left: 23vw;
+    left: 25vw;
     opacity: 0;
     color: #fff;
     top: 65vh;
@@ -583,7 +583,7 @@ nav ul li a
     position: absolute;
     font-family: var(--font);
     font-size: 4.5rem;
-    left: 23vw;
+    left: 25vw;
     opacity: 0;
     color: #fff;
     top: 95vh;
