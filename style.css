@@ -230,7 +230,7 @@ nav ul li a
 .hero .lion{
     position: absolute;
     top: 35vh;
-    right: 1vw;
+    right: -2vw;
     scale: 1.2;
     animation: fd 1.25s forwards;
 }
@@ -571,7 +571,7 @@ nav ul li a
 .intro .stick{
     position: sticky;
     font-family: var(--font);
-    font-size: 5rem;
+    font-size: 3rem;
     margin-left: 10vw;
     margin-top: 0vh;
     color: var(--orange);
