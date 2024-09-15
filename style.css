@@ -659,7 +659,7 @@ nav ul li a
     font-size: 3rem;
     font-weight: 600;
     font-family: var(--font);
-    color: #fffffd0;
+    color: #fff;
     position: relative;
     top: 8vh;
 }
