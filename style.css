@@ -338,7 +338,7 @@ nav ul li a
     left: 25vw;
     color: #fff;
     opacity: 0;
-    top: 18vh;
+    top: 20vh;
     animation: f2 1s forwards;
     animation-timeline: view(1% 3%);
 }
@@ -373,7 +373,7 @@ nav ul li a
     color: var(--orange);
     text-shadow: 0px 1px 10px var(--orange);
     top: 35vh;
-    margin-bottom: 14vh;
+    margin-bottom: 20vh;
 }
 .nnext img{
     position: absolute;
@@ -577,7 +577,7 @@ nav ul li a
     color: var(--orange);
     text-shadow: 0px 1px 10px var(--orange);
     top: 40vh;
-    margin-bottom: 20vh;
+    margin-bottom: 23vh;
 }
 .intro #five{
     position: absolute;
@@ -622,7 +622,7 @@ nav ul li a
     margin:0 auto;
     font-weight: 700;
     padding: 10px 10px 10px 10px;
-    left: 50vw;
+    left: 46vw;
     top: 45%;
     color: var(--orange);
     border-radius: 1000px;
@@ -636,7 +636,7 @@ nav ul li a
 }
 .swipe3:hover{
     border-bottom-width: 7px;
-    top: 51%;
+    top: 46%;
 }
 .last{
     width: 100%;
