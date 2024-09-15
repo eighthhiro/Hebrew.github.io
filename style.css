@@ -599,7 +599,7 @@ nav ul li a
     font-weight: 700;
     padding: 10px 10px 10px 10px;
     left: 52vw;
-    top: 9%;
+    top: 8%;
     color: var(--orange);
     border-radius: 1000px;
     background-color: transparent;
@@ -612,7 +612,7 @@ nav ul li a
 }
 .swipe2:hover{
     border-bottom-width: 7px;
-    top: 10%;
+    top: 9%;
 }
 .swipe3 {
     position: relative;
