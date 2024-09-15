@@ -571,7 +571,7 @@ nav ul li a
 .intro .stick{
     position: sticky;
     font-family: var(--font);
-    font-size: 3rem;
+    font-size: 5rem;
     margin-left: 10vw;
     margin-top: 0vh;
     color: var(--orange);
@@ -582,7 +582,7 @@ nav ul li a
 .intro #five{
     position: absolute;
     font-family: var(--font);
-    font-size: 4.5rem;
+    font-size: 3rem;
     left: 25vw;
     opacity: 0;
     color: #fff;
@@ -598,8 +598,8 @@ nav ul li a
     margin:0 auto;
     font-weight: 700;
     padding: 10px 10px 10px 10px;
-    left: 55vw;
-    top: 14%;
+    left: 54vw;
+    top: 13%;
     color: var(--orange);
     border-radius: 1000px;
     background-color: transparent;
