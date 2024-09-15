@@ -65,7 +65,7 @@ nav h1{
     position: relative;
     font-family: var(--font);
     color: #fff;
-    left: -15rem;
+    left: -12rem;
     cursor: default;
     width: 185px;
 }
@@ -230,7 +230,7 @@ nav ul li a
 .hero .lion{
     position: absolute;
     top: 35vh;
-    right: 2vh;
+    right: 1vw;
     scale: 1.2;
     animation: fd 1.25s forwards;
 }
