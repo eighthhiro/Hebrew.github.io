@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatterer</title>
+    <link rel="icon" href="./Scatter.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js"></script>
+    <script src="./processor.js"></script>
+</head>
+<body>
+
+<header>
+
+    <div class="brand">
+        <img src="./Scatter.png" id="logo">
+        <p>Scatterer</p>
+    </div>
+
+    <div class="links">
+        <p>link</p>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <!-- File Input Section -->
+    <div class="section main">
+
+        <div class="text">
+            How about we scatter the relationship between your students' age and their scores?
+        </div>
+
+        <div class="mainbuttons">
+
+            <div class="filebutton">
+                <label for="file-upload" class="file-input">Upload CSV</label>
+                <input type="file" id="file-upload" accept=".csv" onchange="previewFile()">
+            </div>
+
+            <div class="helpbutton">
+                <button>Help</button>
+            </div>
+
+            <div class="savebutton" id="save-data-button" style="display: none;">
+                <button>Save Data as CSV</button>
+            </div>
+
+            <div id="file-name-display" class="file-name-display"></div>
+        </div>
+
+        <img src="./Scatter.png">
+    </div>
+
+    <!-- File Preview Section -->
+    <div class="section file-preview" id="file-preview">
+        <div class="button-section">
+            <div class="text">
+                File Reader
+            </div>
+
+            <div class="filter-section">
+                
+                <label class="filter-label" for="score-type-filter">Choose View: </label>
+                <select id="score-type-filter" class="dropdown" disabled>
+                    <option value="">All Scores</option>
+                </select>
+
+                <label class="filter-label" for="age-filter">Age: </label>
+                <select id="age-filter" class="dropdown" disabled>
+                    <option value="">Age Filter</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="table-output">
+            <div class="csv-instructions">
+                
+                <div class="requirements-box">
+                  <p>Required columns:</p>
+                  <ul>
+                    <li>Student_ID</li>
+                    <li>Age</li>
+                    <li>"_Score" columns (e.g. Math_Score, Reading_Score, etc.)</li>
+                  </ul>
+                </div>
+                
+                <p class="footer-note">Use comma separators with headers in first row</p>
+              </div>
+        </div>
+    </div>
+
+    <!-- Chart Output Section -->
+    <div class="section chart-section">
+
+        <div class="button-section">
+
+            <div id="chart-title"> Data visualization</div>
+            
+            <div class="filter-section">
+                <div class="filter">
+                <label class="filter-label" for="chart-filter">Calculate</label>
+                <select id="chart-filter" class="dropdown" disabled>
+                    <option value="mode">Mode Distribution</option>
+                    <option value="pearson">Correlation Analysis</option>
+                </select>
+
+            </div>
+
+            <div class="filter">
+                <label class="filter-label" for="chart-score-filter">Choose View: </label>
+                <select id="chart-score-filter" class="dropdown" disabled>
+                    <option value="">Score</option>
+                    <!-- Will be populated with score types -->
+                </select>
+            </div>
+
+            <div class="filter">
+                <label class="filter-label" for="chart-age-filter">Age: </label>
+                <select id="chart-age-filter" class="dropdown" disabled>
+                    <option value="">All Ages</option>
+                </select>
+            </div>
+        </div>
+
+        </div>
+
+        <canvas id="chart-output"></canvas>
+    </div>
+</div>
+
+<!-- Modal Container -->
+<div id="processing-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>File Processing Summary</h2>
+      
+      <div class="processing-stats">
+        <div class="stat-item">
+          <span class="stat-label">Rows Processed:</span>
+          <span id="rows-processed" class="stat-value">0</span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-label">Invalid Values:</span>
+          <span id="invalid-values" class="stat-value">0</span>
+        </div>
+      </div>
+      
+      <div id="column-errors" class="error-section">
+        <!-- Missing columns will be listed here -->
+      </div>
+      
+      <div class="modal-actions">
+        <button id="continue-button">Continue</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
