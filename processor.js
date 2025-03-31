@@ -1,26 +1,28 @@
-function saveDataAsCSV() {
-    if (!window.chartData || window.chartData.length === 0) {
-        alert("No data available to save.");
+function saveChartAsPNG() {
+    if (!window.chart) {
+        alert("No chart available to save.");
         return;
     }
 
-    let csvContent = "data:text/csv;charset=utf-8,";
-
-    // Add headers
-    csvContent += "X Value,Y Value\n";
-
-    // Add data rows
-    window.chartData.forEach(point => {
-        csvContent += `${point.x},${point.y}\n`;
-    });
-
-    // Create a download link
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "chart_data.csv");
+    // Get the canvas element
+    const canvas = document.getElementById('chart-output');
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    
+    // Set the link's href to the canvas data URL
+    link.href = canvas.toDataURL('image/png');
+    
+    // Set the download attribute with a filename
+    link.download = 'chart_image.png';
+    
+    // Append the link to the body (required for Firefox)
     document.body.appendChild(link);
+    
+    // Trigger the click event
     link.click();
+    
+    // Remove the link from the body
     document.body.removeChild(link);
 }
 
