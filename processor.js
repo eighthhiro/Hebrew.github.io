@@ -1,19 +1,21 @@
+// Global chart variable
+let chart = null;
+
 function saveChartAsPNG() {
-    if (!window.chart) {
-        alert("No chart available to save.");
+    // Try to get the chart instance in multiple ways
+    const chartInstance = window.chart || chart;
+    const canvas = document.getElementById('chart-output');
+    
+    if (!chartInstance && (!canvas || canvas.children.length === 0)) {
+        alert("No chart available to save. Please generate a chart first.");
         return;
     }
 
-    // Get the canvas element
-    const canvas = document.getElementById('chart-output');
-    
     // Create a temporary link element
     const link = document.createElement('a');
     
-    // Set the link's href to the canvas data URL
-    link.href = canvas.toDataURL('image/png');
-    
-    // Set the download attribute with a filename
+    // Set quality to 1.0 for best quality
+    link.href = canvas.toDataURL('image/png', 1.0);
     link.download = 'chart_image.png';
     
     // Append the link to the body (required for Firefox)
@@ -23,7 +25,9 @@ function saveChartAsPNG() {
     link.click();
     
     // Remove the link from the body
-    document.body.removeChild(link);
+    setTimeout(() => {
+        document.body.removeChild(link);
+    }, 100);
 }
 
 function parseCSV(csvContent) {
