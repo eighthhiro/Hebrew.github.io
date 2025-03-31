@@ -1,27 +1,68 @@
-function saveDataAsCSV() {
+function saveChartData() {
     if (!window.chartData || window.chartData.length === 0) {
-        alert("No data available to save.");
+        alert("No chart data available to save.");
         return;
     }
 
-    let csvContent = "data:text/csv;charset=utf-8,";
+    // Get chart configuration
+    const selectedAge = document.getElementById('chart-age-filter').value;
+    const selectedScoreType = document.getElementById('chart-score-filter').value || scoreColumns[0];
+    const chartFilter = document.getElementById('chart-filter').value || 'mode';
+    const scoreDisplayName = selectedScoreType.replace('_Score', '');
 
-    // Add headers
-    csvContent += "X Value,Y Value\n";
+    // Prepare CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    
+    // Set headers based on chart type
+    if (chartFilter === 'pearson') {
+        csvContent += `Age,Average ${scoreDisplayName} Score\n`;
+    } else if (!selectedAge) {
+        csvContent += `Age,Mode ${scoreDisplayName} Score\n`;
+    } else {
+        csvContent += `Score Range Start,Score Range End,Frequency\n`;
+    }
 
     // Add data rows
     window.chartData.forEach(point => {
-        csvContent += `${point.x},${point.y}\n`;
+        if (selectedAge && chartFilter !== 'pearson') {
+            // For frequency distribution (histogram)
+            csvContent += `${point.x},${point.binEnd},${point.y}\n`;
+        } else {
+            // For other chart types (scatter/line)
+            csvContent += `${point.x},${point.y}\n`;
+        }
     });
 
-    // Create a download link
+    // Create download link for CSV
     const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "chart_data.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const csvLink = document.createElement("a");
+    csvLink.setAttribute("href", encodedUri);
+    csvLink.setAttribute("download", "chart_data.csv");
+    document.body.appendChild(csvLink);
+    
+    // Save chart as PNG
+    const canvas = document.getElementById('chart-output');
+    if (canvas) {
+        const pngLink = document.createElement('a');
+        pngLink.href = canvas.toDataURL('image/png');
+        pngLink.download = 'chart_image.png';
+        document.body.appendChild(pngLink);
+        
+        // Trigger both downloads
+        setTimeout(() => {
+            csvLink.click();
+            pngLink.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(csvLink);
+                document.body.removeChild(pngLink);
+            }, 100);
+        }, 100);
+    } else {
+        csvLink.click();
+        document.body.removeChild(csvLink);
+    }
 }
 
 function parseCSV(csvContent) {
