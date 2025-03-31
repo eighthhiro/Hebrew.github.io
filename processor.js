@@ -4,7 +4,7 @@ function saveChartData() {
         return;
     }
 
-    // Get chart configuration
+    // Get current chart configuration
     const selectedAge = document.getElementById('chart-age-filter').value;
     const selectedScoreType = document.getElementById('chart-score-filter').value || scoreColumns[0];
     const chartFilter = document.getElementById('chart-filter').value || 'mode';
@@ -13,7 +13,7 @@ function saveChartData() {
     // Prepare CSV content
     let csvContent = "data:text/csv;charset=utf-8,";
     
-    // Set headers based on chart type
+    // Set appropriate headers based on chart type
     if (chartFilter === 'pearson') {
         csvContent += `Age,Average ${scoreDisplayName} Score\n`;
     } else if (!selectedAge) {
@@ -33,36 +33,14 @@ function saveChartData() {
         }
     });
 
-    // Create download link for CSV
+    // Create and trigger download
     const encodedUri = encodeURI(csvContent);
-    const csvLink = document.createElement("a");
-    csvLink.setAttribute("href", encodedUri);
-    csvLink.setAttribute("download", "chart_data.csv");
-    document.body.appendChild(csvLink);
-    
-    // Save chart as PNG
-    const canvas = document.getElementById('chart-output');
-    if (canvas) {
-        const pngLink = document.createElement('a');
-        pngLink.href = canvas.toDataURL('image/png');
-        pngLink.download = 'chart_image.png';
-        document.body.appendChild(pngLink);
-        
-        // Trigger both downloads
-        setTimeout(() => {
-            csvLink.click();
-            pngLink.click();
-            
-            // Clean up
-            setTimeout(() => {
-                document.body.removeChild(csvLink);
-                document.body.removeChild(pngLink);
-            }, 100);
-        }, 100);
-    } else {
-        csvLink.click();
-        document.body.removeChild(csvLink);
-    }
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "chart_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 function parseCSV(csvContent) {
