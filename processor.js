@@ -1,33 +1,27 @@
-// Global chart variable
-let chart = null;
-
-function saveChartAsPNG() {
-    // Try to get the chart instance in multiple ways
-    const chartInstance = window.chart || chart;
-    const canvas = document.getElementById('chart-output');
-    
-    if (!chartInstance && (!canvas || canvas.children.length === 0)) {
-        alert("No chart available to save. Please generate a chart first.");
+function saveDataAsCSV() {
+    if (!window.chartData || window.chartData.length === 0) {
+        alert("No data available to save.");
         return;
     }
 
-    // Create a temporary link element
-    const link = document.createElement('a');
-    
-    // Set quality to 1.0 for best quality
-    link.href = canvas.toDataURL('image/png', 1.0);
-    link.download = 'chart_image.png';
-    
-    // Append the link to the body (required for Firefox)
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    // Add headers
+    csvContent += "X Value,Y Value\n";
+
+    // Add data rows
+    window.chartData.forEach(point => {
+        csvContent += `${point.x},${point.y}\n`;
+    });
+
+    // Create a download link
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "chart_data.csv");
     document.body.appendChild(link);
-    
-    // Trigger the click event
     link.click();
-    
-    // Remove the link from the body
-    setTimeout(() => {
-        document.body.removeChild(link);
-    }, 100);
+    document.body.removeChild(link);
 }
 
 function parseCSV(csvContent) {
